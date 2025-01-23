@@ -44,12 +44,12 @@ const Player = ({ selectedAudio }: TProps) => {
     setProgress((currentTime / audioRef.current.duration) * 100 || 0);
   };
 
-  const handleProgressChange = (e, newValue) => {
+  const handleProgressChange = (e: Event, newValue: number | number[]) => {
     if (!audioRef.current) return;
 
-    const newTime = (audioRef.current.duration * newValue) / 100;
+    const newTime = (audioRef.current.duration * (newValue as number)) / 100;
     audioRef.current.currentTime = newTime;
-    setProgress(newValue);
+    setProgress(newValue as number);
   };
 
   const handleLoadedMetadata = () => {
